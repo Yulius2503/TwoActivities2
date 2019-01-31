@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MainActivity</string>
+    <string name="button_main">send</string>
+</resources>
