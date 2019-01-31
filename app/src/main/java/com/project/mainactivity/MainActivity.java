@@ -19,7 +19,21 @@ public class MainActivity extends AppCompatActivity {
     public static final int TEXT_REQUEST=1;
     public static final String EXTRA_MESSAGE = "com.project.mainactivity.extra.MESSAGE";
 
+
     @Override
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+        if (requestCode == TEXT_REQUEST){
+            if (resultCode == RESULT_OK){
+                String reply=data.getStringExtra(SecondActivity.EXTRA_REPLY);
+                mReplyTextView.setText(reply);
+                mReplyTextView.setVisibility(View.VISIBLE);
+                mReplyHeadTextView.setVisibility(View.VISIBLE);
+
+            }
+        }
+    }
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -37,15 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode,resultCode,data);
-        if (requestCode == TEXT_REQUEST){
-            if (resultCode == RESULT_OK){
-                String reply=data.getStringExtra(SecondActivity.EXTRA_REPLY);
-                mReplyTextView.setVisibility(View.VISIBLE);
-                mReplyTextView.setText(reply);
-            }
-        }
-    }
+
 
 }
